@@ -1,1 +1,146 @@
-# SnakeGame2DOpenGL
+# Snake Game 2D dengan OpenGL
+
+Game ular klasik (Snake Game) yang diimplementasikan menggunakan OpenGL dan GLUT. Game ini menawarkan pengalaman bermain yang menyenangkan dengan fitur-fitur modern namun tetap mempertahankan kesederhanaan gameplay klasik.
+
+![Snake Game Preview](image\Screenshot (974).png)
+
+## Fitur Game
+
+- **Dua Mode Permainan**: Mode Classic dan Challenge dengan pola rintangan yang berbeda
+- **Sistem Level**: Tingkat kesulitan meningkat seiring dengan kenaikan level
+- **Power-Up**: Dapatkan kemampuan spesial untuk menembus dinding dan tubuh ular sendiri
+- **Efek Visual**: Animasi pulsa pada makanan dan power-up, gradasi warna pada tubuh ular
+- **Kontrol Game Lengkap**: Fitur pause, restart, dan pergantian mode
+
+## Cara Menjalankan
+
+Game ini dapat dikompilasi dan dijalankan baik di Dev-C++ maupun di Visual Studio Code.
+
+### Menggunakan Dev-C++
+
+1. **Persiapan Lingkungan**:
+   - Unduh dan instal [Dev-C++](https://www.bloodshed.net/) atau [Dev-C++ TDM-GCC](https://sourceforge.net/projects/orwelldevcpp/)
+   - Pastikan telah menginstal GLUT untuk Dev-C++:
+     - Unduh [GLUT untuk MinGW](https://www.transmissionzero.co.uk/software/freeglut-devel/)
+     - Ekstrak file dan salin:
+       - `freeglut.dll` ke `C:\Windows\System32` (untuk sistem 32-bit) atau ke `C:\Windows\SysWOW64` (untuk sistem 64-bit) jika tidak berfungsi simpan kedalam folder projek sejajar dengan main.cpp
+       - `libfreeglut.a` dan `libfreeglut_static.a` ke folder `lib` di direktori instalasi MinGW (biasanya di `C:\Program Files (x86)\Dev-Cpp\MinGW\lib`)
+       - Semua file header (.h) ke folder `include\GL` di direktori instalasi MinGW (biasanya di `C:\Program Files (x86)\Dev-Cpp\MinGW\include\GL`)
+
+2. **Kompilasi dan Menjalankan**:
+   - Buka Dev-C++ dan buat project baru (File > New > Project)
+   - Pilih "Console Application" dan centang "C++ Project"
+   - Tambahkan file source code `snake_game.cpp` ke project
+   - Buka menu Project > Project Options
+   - Pilih tab "Parameters" dan tambahkan `-lglut -lopengl32 -lglu32` pada Linker
+   - Kompilasi dengan F9 atau menu Execute > Compile
+   - Jalankan dengan F10 atau menu Execute > Run
+
+### Menggunakan Visual Studio Code
+
+1. **Persiapan Lingkungan**:
+   - Unduh dan instal [Visual Studio Code](https://code.visualstudio.com/)
+   - Instal ekstensi C/C++ untuk VS Code
+   - Instal [MinGW-w64](https://sourceforge.net/projects/mingw-w64/) atau [MSYS2](https://www.msys2.org/) untuk kompiler GCC
+   - Pastikan telah menginstal GLUT/FreeGLUT:
+     - Untuk MSYS2: Buka terminal MSYS2 dan jalankan `pacman -S mingw-w64-x86_64-freeglut`
+     - Untuk MinGW manual: Unduh dan instal seperti pada instruksi Dev-C++
+
+2. **Konfigurasi VS Code**:
+   - Buat folder project dan simpan file `snake_game.cpp` di dalamnya
+   - Buka folder tersebut di VS Code
+   - Buat file `tasks.json` di folder `.vscode` dengan konfigurasi berikut:
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build snake game",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "snake_game.cpp",
+                "-o",
+                "snake_game",
+                "-lglut",
+                "-lopengl32",
+                "-lglu32"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
+```
+
+   - Jalankan task build dengan menekan Ctrl+Shift+B
+   - Jalankan program yang sudah dikompilasi dengan membuka terminal dan ketik `./snake_game`
+
+## Cara Bermain
+
+- **Kontrol Gerakan**: Gunakan tombol panah (↑, ↓, ←, →) untuk menggerakkan ular
+- **Pause/Resume**: Tekan tombol 'P' untuk menjeda atau melanjutkan permainan
+- **Restart**: Tekan tombol 'F1' untuk memulai ulang game setelah Game Over
+- **Ganti Mode**: Tekan tombol 'M' pada layar Game Over untuk mengganti mode permainan
+- **Keluar**: Tekan tombol 'ESC' untuk keluar dari permainan
+
+## Aturan Permainan
+
+1. Arahkan ular untuk memakan makanan (kotak merah) untuk menambah skor dan panjang ular
+2. Hindari menabrak dinding dan tubuh ular sendiri
+3. Kumpulkan power-up (kotak biru) untuk mendapatkan kemampuan khusus sementara
+4. Setiap 5 makanan yang dimakan akan menaikkan level dan tingkat kesulitan
+
+## Mode Permainan
+
+### Mode Classic
+- Tembok rintangan muncul secara acak
+- Jumlah tembok bertambah seiring dengan kenaikan level
+- Cocok untuk pengalaman bermain tradisional
+
+### Mode Challenge
+- Tembok rintangan membentuk pola berbeda setiap level
+- Pola berubah antara horizontal, vertikal, dan maze
+- Menawarkan tantangan yang lebih terstruktur
+
+## Persyaratan Sistem
+
+- Sistem operasi Windows (Windows 7 atau lebih baru)
+- OpenGL dan GLUT/FreeGLUT terinstal
+- Minimal RAM 512MB
+- Ruang disk minimal 10MB
+
+## Troubleshooting
+
+### Masalah Umum dan Solusi:
+
+1. **Error "freeglut.dll tidak ditemukan"**:
+   - Pastikan file DLL sudah disalin ke folder System32 atau SysWOW64
+
+2. **Error linking, "cannot find -lglut"**:
+   - Pastikan library GLUT sudah terpasang dengan benar
+   - Periksa path linker di pengaturan project
+
+3. **Window tidak muncul atau crash saat startup**:
+   - Pastikan versi OpenGL dan driver grafis sudah diperbarui
+   - Coba jalankan sebagai administrator
+
+## Pengembangan Lebih Lanjut
+
+Beberapa ide untuk pengembangan lebih lanjut:
+- Menambahkan efek suara
+- Fitur high score dan penyimpanan skor
+- Lebih banyak jenis power-up dengan efek berbeda
+- Mode multiplayer lokal
+
+## Lisensi
+
+Game ini dibuat untuk tujuan edukasi dan hiburan. Anda bebas menggunakan, memodifikasi, dan mendistribusikan kode ini dengan syarat menyertakan atribusi asli.
+
+---
+
+Dibuat dengan ❤️ menggunakan OpenGL dan GLUT
