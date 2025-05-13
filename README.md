@@ -3,7 +3,7 @@
 
 Game ular klasik (Snake Game) yang diimplementasikan menggunakan OpenGL dan GLUT. Game ini menawarkan pengalaman bermain yang menyenangkan dengan fitur-fitur modern namun tetap mempertahankan kesederhanaan gameplay klasik.
 
-!([Snake Game Preview](https://github.com/syamsulmaarip05/SnakeGame2DOpenGL/blob/main/image/Screenshot%20(974).png))
+!([Snake Game Preview](https://raw.github.com/syamsulmaarip05/SnakeGame2DOpenGL/blob/main/image/Screenshot%20(974).png))
 
 ## Fitur Game
 
