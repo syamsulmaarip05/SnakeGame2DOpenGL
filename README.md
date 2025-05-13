@@ -43,9 +43,8 @@ Game ini dapat dikompilasi dan dijalankan baik di Dev-C++ maupun di Visual Studi
 1. **Persiapan Lingkungan**:
    - Unduh dan instal [Visual Studio Code](https://code.visualstudio.com/)
    - Instal ekstensi C/C++ untuk VS Code
-   - Instal [MinGW-w64](https://sourceforge.net/projects/mingw-w64/) atau [MSYS2](https://www.msys2.org/) untuk kompiler GCC
+   - Instal [MinGW-w64](https://sourceforge.net/projects/mingw-w64/)
    - Pastikan telah menginstal GLUT/FreeGLUT:
-     - Untuk MSYS2: Buka terminal MSYS2 dan jalankan `pacman -S mingw-w64-x86_64-freeglut`
      - Untuk MinGW manual: Unduh dan instal seperti pada instruksi Dev-C++
 
 2. **Konfigurasi VS Code**:
